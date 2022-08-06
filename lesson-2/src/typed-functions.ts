@@ -30,20 +30,23 @@ console.groupEnd();
 
 console.group('2. Aprašykite funkcijų tipus prieš deklaruojant funkcijas');
 {
-  type beforeDeclaration = (a: number, b: number) => number;
-  const multiply: beforeDeclaration = (a, b) => a * b;
+  type twoNum = (a: number, b: number) => number;
+  type textDeclaration = (text: string) => void;
+  type oneNum = (nbr: number) => number;
 
-  const pwr: beforeDeclaration = function (base, power) {
+  const multiply: twoNum = (a, b) => a * b;
+
+  const pwr: twoNum = function (base, power) {
     return base ** power;
   };
 
-  const squareRoot = (number: number) => number ** (1 / 2);
+  const squareRoot: oneNum = (number) => number ** (1 / 2);
 
-  const root: beforeDeclaration = function (base, nthRoot) {
+  const root: twoNum = function (base, nthRoot) {
     return base ** (1 / nthRoot);
   };
 
-  const printBlueText = (text: string) => console.log(`%c${text}`, 'color: #0000ee');
+  const printBlueText: textDeclaration = (text) => console.log(`%c${text}`, 'color: #0000ee');
 
   const num1: number = 16;
   const num2: number = 4;
