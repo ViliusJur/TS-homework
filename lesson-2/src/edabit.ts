@@ -1,6 +1,4 @@
 /* eslint-disable no-lone-blocks */
-// Pirmas dar dar, antrą jau sunku įkirsti, sprendimą perskaityti išeina,
-// bet pačiam išspręsti be šansų
 
 console.groupCollapsed('1 - https://edabit.com/challenge/nuXdWHAoHv9y38sn7');
 {

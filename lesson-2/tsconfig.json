@@ -23,5 +23,6 @@
   },
   "include": ["src/edabit.ts"],
   "include": ["src/typed-arrays.ts"],
-  "include": ["src/typed-functions.ts"]
+  "include": ["src/typed-functions.ts"],
+  "include": ["src/typed-objects.ts"],
 }

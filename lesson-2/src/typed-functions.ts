@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-lone-blocks */
 console.group('1. Aprašykite funkcijoms tipus jas deklaruojant');
 {
@@ -30,19 +31,19 @@ console.groupEnd();
 
 console.group('2. Aprašykite funkcijų tipus prieš deklaruojant funkcijas');
 {
-  type twoNum = (a: number, b: number) => number;
+  type TwoNum = (a: number, b: number) => number;
   type textDeclaration = (text: string) => void;
   type oneNum = (nbr: number) => number;
 
-  const multiply: twoNum = (a, b) => a * b;
+  const multiply: TwoNum = (a, b) => a * b;
 
-  const pwr: twoNum = function (base, power) {
+  const pwr: TwoNum = function (base, power) {
     return base ** power;
   };
 
   const squareRoot: oneNum = (number) => number ** (1 / 2);
 
-  const root: twoNum = function (base, nthRoot) {
+  const root: TwoNum = function (base, nthRoot) {
     return base ** (1 / nthRoot);
   };
 
