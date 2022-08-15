@@ -244,6 +244,16 @@ console.groupCollapsed('10. Sukurkite objektą, kuriame būtų apskaičiuotas va
   //   if (person.hasCar) return result;
   //   if (result.female) result[person.sex] as CarOwnerCountBySex['female'] + 1;
   // };
+  type AnonymousPerson = Omit<Person, 'name' | 'surname' | 'sex'>;
+
+  const createAnonymous = ({
+    name, surname, sex, ...anonPerson
+  }: Person): AnonymousPerson => anonPerson;
+
+  const anonymousPeople: AnonymousPerson[] = people.map(createAnonymous);
+
+  console.table(people);
+  console.table(anonymousPeople);
 }
 console.groupEnd();
 

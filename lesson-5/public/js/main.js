@@ -147,6 +147,10 @@ console.groupCollapsed('9. Atspausdinkite žmones kurie yra susituokę');
 console.groupEnd();
 console.groupCollapsed('10. Sukurkite objektą, kuriame būtų apskaičiuotas vairuojančių žmonių kiekis pagal lytį');
 {
+    const createAnonymous = ({ name, surname, sex, ...anonPerson }) => anonPerson;
+    const anonymousPeople = people.map(createAnonymous);
+    console.table(people);
+    console.table(anonymousPeople);
 }
 console.groupEnd();
 console.groupCollapsed('11. Performuokite žmonių masyvą, jog kiekvieno žmogaus savybė "income", taptų "salary"');
