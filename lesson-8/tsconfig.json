@@ -21,5 +21,6 @@
     "removeComments": true, // ar pašalinti komentarus sukompiliuotuose failuose                    
     "skipLibCheck": true // ar praleisti tipų tikrinimą naudojant bibliotekas
   },
-  "include": ["./src/main.ts"]
+  "include": ["./src/main.ts"],
+  
 }
