@@ -114,7 +114,7 @@ const people: Person[] = [
   new Person('Meskinas', '  Meskauskas Zuikis  ', 60, 180, 90),
   new Person('Blogas', 'Kvapas', 60, 180, 100, HeightUnits.CENTIMETERS),
 ];
-
+console.log(people);
 console.group('1. Sukurkite Person klasei savybes "name" ir "surname". Kiekvienai iš jų sukurkite setterius, ir bendrą getterį fullname');
 {
   const foolsnames: string[] = people.map((p) => p.getFullName());
