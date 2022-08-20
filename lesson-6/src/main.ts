@@ -46,21 +46,85 @@ console.group('4. Parašykite funkciją,  kuri pirmu parametru priima string | n
   // ('a', 2) -> ['a', 'a']
   // (77, 4) -> [77, 77, 77, 77]
   // (true, 1) -> [true]
-  // Sprendimas ir rezultatų spausdinimas
+  type ArgumentSample = [PrimitiveType, number];
 
-  const funkcija = (arr: PrimitiveType): PrimitiveType[] => 
+  const solution = <T extends PrimitiveType>(
+    value: T,
+    count: number): Array<T> => Array.from(new Array(count)).map((_) => value);
+
+  const dataSamples: ArgumentSample[] = [
+    ['a', 2],
+    [77, 4],
+    [true, 1],
+  ];
+
+  dataSamples.forEach(
+    (args) => console.log(
+      `solution(${args.join(', ')}):`,
+      solution(...args),
+    ),
+  );
 }
 console.groupEnd();
 
 console.group('5. Parašykite funkciją, kuri sujungia tokių pat tipų masyvus į vieną masyvą');
 {
-  // Sprendimas ir rezultatų spausdinimas
+  const sameType1 = [1, 2, 3, 4, 5];
+  const sameType2 = [6, 7, 8, 9, 10];
+
+  const sameType3 = ['vienas', 'du', 'trys'];
+  const sameType4 = ['keturi', 'penki', 'sesi'];
+
+  const mergeArr = <Type>(t1: Type[], t2: Type[]): Type[] => t1.concat(t2);
+  console.log(mergeArr(sameType1, sameType2));
+  console.log(mergeArr(sameType3, sameType4));
 }
 console.groupEnd();
 
 console.group('6. Parašykite funkciją, kuri priimtų bet kokią reikšmę ir grąžintų objektą su savybėmis-funkcijomis "setValue" - reikšmei nustatyti ir "getValue" tai reikšmei nustatyti. Funkcijai perduota reikšmė neturi būti pasiekiama tiesiogiai.');
 {
-  // Sprendimas ir rezultatų spausdinimas
+  type IncapsulatedValueObject<Type> = {
+    // eslint-disable-next-line no-unused-vars
+    setValue: (newValue: Type) => void,
+    getValue: () => Type
+  };
+
+  const solution = <Type>(initialValue: Type): IncapsulatedValueObject<Type> => {
+    let value: Type = initialValue;
+
+    return {
+      // eslint-disable-next-line no-return-assign
+      setValue: (newValue) => value = newValue,
+      getValue: () => value,
+    };
+  };
+
+  // Spausdinimas
+  const value1: number = 7;
+  const value2: Array<string> = ['Sidnius', 'Mauricijus', 'Penktasis'];
+  const value3: { name: string, surname: string } = { name: 'Fanatijus', surname: 'Labdara' };
+
+  const obj1 = solution(value1);
+  const obj2 = solution(value2);
+  const obj3 = solution(value3);
+
+  console.log('initial values');
+  console.log({
+    value1: obj1.getValue(),
+    value2: obj2.getValue(),
+    value3: obj3.getValue(),
+  });
+
+  console.log('changing values...');
+  obj1.setValue(9);
+  obj2.setValue(['Pakeista']);
+  obj3.setValue({ name: 'Pakaitalas', surname: 'Fuflo' });
+
+  console.log({
+    value1: obj1.getValue(),
+    value2: obj2.getValue(),
+    value3: obj3.getValue(),
+  });
 }
 console.groupEnd();
 
@@ -101,4 +165,22 @@ console.group(`
       name: 'Užuodauskas', surname: 'Perrašimauskas', university: 'VGTU', course: 1,
     },
   ];
+
+  const isStudent = (person: Person): person is Student => {
+    const student = person as Student;
+
+    return student.university !== undefined && student.course !== undefined;
+  };
+
+  const isWorker = (person: Person): person is Worker => {
+    const worker = person as Worker;
+
+    return worker.avgMonthlyPay !== undefined;
+  };
+
+  const students = people.filter((person) => isStudent(person));
+  console.log('Students', students);
+
+  const worker = people.filter((person) => isWorker(person));
+  console.log('Workers', worker);
 }
