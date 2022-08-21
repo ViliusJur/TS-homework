@@ -166,7 +166,7 @@ console.group(`
     },
   ];
 
-  const isStudent = (person: Person): person is Student => {
+  const isStudent = (person: Person): boolean => {
     const student = person as Student;
 
     return student.university !== undefined && student.course !== undefined;
