@@ -1,51 +1,67 @@
-"use strict";
-console.group('1. Sukurkite funkciją, kuri atspausdiną tekstą didžiosiomis raidėmis');
-{
-    const UpperCase = (string) => string.toUpperCase();
-    console.log(UpperCase('labas rytas'));
-}
+import WorkPerson from './entities/work-person.js';
+import SelfEmployedPerson from './entities/self-employed-person.js';
+import BuisnessLicencePerson from './entities/business-license-person.js';
+import Job from './entities/job.js';
+const backendDeveloper = new WorkPerson({
+    id: '25169845878',
+    name: 'Apsas',
+    surname: 'Revestenis',
+    hourPay: 25,
+    fullTimeEquivalent: 1,
+});
+const frontendDeveloper = new WorkPerson({
+    id: '25167745878',
+    name: 'Eventas',
+    surname: 'Klikauskas',
+    hourPay: 25,
+    fullTimeEquivalent: 0.5,
+});
+const selfEmployed1 = new SelfEmployedPerson({
+    id: '25169845878',
+    name: 'Beribė',
+    surname: 'Jūračka',
+    hourPay: 25,
+    hoursWorked: 10,
+});
+const selfEmployed2 = new SelfEmployedPerson({
+    id: '25169145878',
+    name: 'Fanalijus',
+    surname: 'Analijus',
+    hourPay: 10,
+});
+const designer = new BuisnessLicencePerson({
+    id: '15169845878',
+    name: 'Plunksytė',
+    surname: 'Krupštytė',
+});
+const jobs = [
+    new Job('Facebook adds', 200),
+    new Job('Google adds', 700),
+    new Job('Twitter adds', 400),
+];
+jobs[0].completeJob();
+jobs[2].completeJob();
+const marketingSpecialist = new BuisnessLicencePerson({
+    id: '15169845878',
+    name: 'Protenis',
+    surname: 'Knistauskenis',
+    jobs,
+});
+const employees = [
+    backendDeveloper,
+    frontendDeveloper,
+    selfEmployed1,
+    selfEmployed2,
+    designer,
+    marketingSpecialist,
+];
+console.group('1. Atspausdinkite visus darbuotojus');
+employees.forEach((emp) => console.log(emp.toString()));
 console.groupEnd();
-console.groupCollapsed('2. Sukurkite funkciją, kuri grąžina pirmo ir antro parametro bendrą simbolių skaičių');
-{
-    const symbolsNumber = (par1, par2) => par1.length + par2.length;
-    console.log(symbolsNumber('kas yra?', 'blet'));
-}
-console.groupEnd();
-console.groupCollapsed('3. Sukurkite funkciją, kuri grąžina <true>, jeigu žodyje yra 2 parametru perduoda raidė, priešingu atveju false');
-{
-    const includesLetter = (str, letter) => str.includes(letter);
-    console.log(includesLetter('labas', 'z'));
-}
-console.groupEnd();
-console.groupCollapsed('4. Sukurkite funkciją, kuri grąžina <true>, jeigu žodyje yra lyginis skaičius simbolių');
-{
-    const evenOrNot = (word) => {
-        if (word.length % 2 === 0) {
-            return true;
-        }
-        return false;
-    };
-    console.log(evenOrNot('try'));
-}
-console.groupEnd();
-console.groupCollapsed('5. Sukurkite funkciją, kuri grąžina balsių kiekį žodyje');
-{
-    const vowels = (str) => str.match(/[aeiou]/gi).length;
-    console.log(vowels('aaaa'));
-}
-console.groupEnd();
-console.groupCollapsed('6. Sukurkite funkciją, kuri grąžina bet kokios raidės kiekį žodyje');
-{
-    const counntLetter = (word, letter) => {
-        let count = 0;
-        for (let i = 0; i <= word.length; i += 1) {
-            if (word[i] === letter) {
-                count += 1;
-            }
-        }
-        return count;
-    };
-    console.log(counntLetter('labas', 'a'));
-}
+console.group('2. Atspausdinkite visų darbuotojų atlyginimus');
+employees.forEach((emp) => {
+    console.log(emp.getPersonInfo());
+    console.log(emp.calcPay());
+});
 console.groupEnd();
 //# sourceMappingURL=main.js.map
