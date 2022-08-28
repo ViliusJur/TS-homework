@@ -1,9 +1,9 @@
-import Table from './table';
-import cars from '../data/cars';
-import brands from '../data/brands';
-import models from '../data/models';
+import Table from "./table";
+import cars from "../data/cars";
+import brands from "../data/brands";
+import models from "../data/models";
 import CarsCollection from '../helpers/cars-collection';
-import stringifyProps from '../helpers/stingify-object';
+import stringifyProps from "../helpers/stingify-object";
 
 class App {
   private htmlElement: HTMLElement;
@@ -30,7 +30,7 @@ class App {
         year: 'Metai',
       },
       rowsData: this.carsCollection.all.map(stringifyProps),
-    });
+    });;
 
     const container = document.createElement('div');
     container.className = 'container my-5';
